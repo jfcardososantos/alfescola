@@ -15,13 +15,29 @@ export let environment: {
 
 
 
-export const eemtv = {
+export const galileu = {
   schoolCode: 'eegalileu',
   schoolName: 'Escola Estadual Galileu Galilei',
   frasePrincipal: 'Uma frase que represente a escola',
   atendimento: ['Ensino Fundamental I', 'Ensnino Fundamental II'],
   schoolLogo: '../assets/logos/galileu-logo.png',
   fachada: '../assets/fachadas/fachada.JPG',
+
+  mongoDbUrl: 'https://lokal-locacoes-backend-api.grwbnq.easypanel.host',
+  mongoDbConnection: 'mongodb://mongo:871275a16ff1643ba93f@lokal-locacoes_lokallocacoesdb:27017',
+  filesZiplineUrl: 'https://lokal-locacoes-files.grwbnq.easypanel.host/api/upload',
+  filesZiplineKey: 'BQkcnMzo0MBIjxxluGAeBu4d.MTcyODM5ODQ4NTY1OQ',
+
+}
+
+export const ieat = {
+  schoolCode: 'ieat',
+  schoolName: 'Instituto de Educação Anísio Teixeira',
+  frasePrincipal: 'Uma frase que represente a escola',
+  atendimento: ['Ensnino Fundamental II', 'Ensino Médio Diurno', 'Ensino Médio Noturno'],
+  schoolLogo: '../assets/logos/galileu-logo.png',
+  fachada: '../assets/fachadas/fachada.JPG',
+
   mongoDbUrl: 'https://lokal-locacoes-backend-api.grwbnq.easypanel.host',
   mongoDbConnection: 'mongodb://mongo:871275a16ff1643ba93f@lokal-locacoes_lokallocacoesdb:27017',
   filesZiplineUrl: 'https://lokal-locacoes-files.grwbnq.easypanel.host/api/upload',
@@ -48,15 +64,20 @@ export const calendarTypes = [
 
 switch (window.location.hostname) {
   case 'localhost':
-    environment = eemtv; // environment para testes
+    environment = ieat; // environment para testes
     break;
 
-  case 'lokallocacoes.com.br':
-    environment = eemtv;
+  case 'ieat.com.br':
+    environment = ieat;
     break;
+
+  case 'galileu.com.br':
+    environment = galileu;
+    break;
+
 
 
   default:
-    environment = eemtv;
+    environment = galileu;
     break;
 }

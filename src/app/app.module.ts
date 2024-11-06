@@ -91,6 +91,7 @@ import { SkeletonModule } from 'primeng/skeleton';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { TagModule } from 'primeng/tag';
 import { AnimateOnScrollModule } from 'primeng/animateonscroll';
+import { LoadingComponent } from './components/tools/loading/loading.component';
 
 
 
@@ -140,7 +141,8 @@ registerLocaleData(localePT);
     AdminProfessoresComponent,
     MeuHorarioComponent,
     MeuBoletimComponent,
-    JustificarFaltaComponent
+    JustificarFaltaComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

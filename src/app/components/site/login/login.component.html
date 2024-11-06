@@ -1,18 +1,34 @@
 
 <div class="justify-content-center flex" >
 
-<div class="surface-card my-4 p-4 shadow-2 border-round justify-content-center w-full lg:w-4">
+<div class="surface-card my-4 p-4 shadow-2 border-round justify-content-center w-full lg:w-8">
   <div class="text-center mb-5">
       <img [src]="logo" alt="school-logo" height="80" class="mb-3">
       <div class="text-900 text-3xl font-medium mb-3">{{schoolName}}</div>
-      <span class="text-600 font-medium line-height-3">Insira suas credenciais para acessar o sistema</span>
+      <span class="text-600 font-medium line-height-3">{{instrucoes}}</span>
   </div>
 
-  <div>
+
+
+<div  *ngIf="!selectedUserType && !loading" pAnimateOnScroll enterClass="fadein" leaveClass="fadeout" class="animation-duration-500">
+  <p-selectButton
+  class="flex justify-content-center align-content-center"
+  [options]="userType"
+  [(ngModel)]="selectedUserType"
+  (onChange)="changeMessage()"
+  optionLabel="label"
+  optionValue="value" />
+</div>
+
+
+
+
+
+  <div  *ngIf="selectedUserType && !loading" pAnimateOnScroll enterClass="fadein" leaveClass="fadeout" class="animation-duration-1000">
 
     <form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
       <div>
-        <label for="email" class="block text-900 font-medium mb-2">Usuário</label>
+        <label for="email" class="block text-900 font-medium mb-2">Usuário/email</label>
         <input id="email" type="email" placeholder="Nome do usuário" pInputText required [(ngModel)]="model.email" name="email" class="w-full mb-3">
       </div>
 
@@ -23,10 +39,21 @@
 
       <button type="submit" pButton pRipple [disabled]="!loginForm.form.valid" label="Login" icon="pi pi-user" class="w-full mb-3"></button>
 
+      <div *ngIf="selectedUserType && !loading" class="flex justify-content-center">
+        <button severity="warning" pButton pRipple (click)="clearUserType()" label="Alterar tipo" icon="pi pi-refresh" class="w-full mb-3"></button>
+      </div>
+
+
     </form>
 
 
   </div>
+
+  <div *ngIf="loading">
+    <app-loading></app-loading>
+  </div>
+
+
 </div>
 
 </div>
