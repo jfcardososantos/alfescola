@@ -64,7 +64,7 @@ export const calendarTypes = [
 
 switch (window.location.hostname) {
   case 'localhost':
-    environment = ieat; // environment para testes
+    environment = galileu; // environment para testes
     break;
 
   case 'ieat.com.br':

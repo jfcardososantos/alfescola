@@ -1,20 +1,118 @@
-<div class="flex align-items-center justify-content-center">
-  <div class="grid grid-nogutter surface-section text-800">
-    <div class="col-12 md:col-6 p-6 text-center md:text-center align-items-center justify-content-center ">
-        <section>
-            <span class="block flex justify-content-center flex-wrap text-4xl font-bold mb-1">{{ schoolName }}</span>
-            <div class="text-2xl text-primary font-bold mb-3" >
-              <p class="m-1" *ngFor="let item of atendimento" >{{item}}</p>
+ <!-- Header do site -->
+<div class="grid grid-nogutter surface-section text-800">
+  <div
+    class="col-12 md:col-6 p-6 text-center md:text-left flex align-items-center ">
+    <section>
+      <span
+        class="block flex justify-content-center flex-wrap text-6xl font-bold mb-1">{{
+        schoolName }}</span>
+      <div class="text-2xl text-primary font-bold mb-3">
+        <p class="m-1" *ngFor="let item of atendimento">{{item}}</p>
 
-            </div>
-            <p class="mt-0 mb-4 text-700 line-height-3">{{frase}}</p>
-  </section>
-    </div>
-    <div class="col-12 md:col-6 overflow-hidden">
-        <img [src]="fachada" alt="Image" class="md:ml-auto block h-30rem " style="clip-path: polygon(8% 0, 100% 0%, 100% 100%, 0 100%)">
-    </div>
+      </div>
+      <p class="mt-0 mb-4 text-700 line-height-3">{{frase}}</p>
+    </section>
+  </div>
+  <div *ngIf="fachada" class="col-12 md:col-6 overflow-hidden">
+    <img [src]="fachada" alt="Image" class="md:ml-auto block h-30rem "
+      style="clip-path: polygon(8% 0, 100% 0%, 100% 100%, 0 100%)">
   </div>
 </div>
 
+<p-divider></p-divider>
+
+<!-- Banners -->
+<div class="surface-card line-height-3 surface-200">
+
+  <p-galleria
+    [value]="banner"
+    [showIndicators]="true"
+    [showThumbnails]="false"
+    [responsiveOptions]="responsiveOptions"
+    [containerStyle]="{ 'width': '100%' }">
+    <ng-template pTemplate="item" let-item>
+      <img [src]="item.itemImageSrc"
+        style="height: 200px; width: 100%; object-fit: cover; display: block;" />
+    </ng-template>
+
+    <!-- <ng-template pTemplate="caption" let-item>
+      <h4 style="margin-bottom: .5rem; color: #ffffff;">
+          {{ item.title }}
+      </h4>
+      <p>{{ item.alt }}</p>
+  </ng-template> -->
+
+  </p-galleria>
+
+</div>
+
+<p-divider></p-divider>
+
+<!-- Avisos -->
+<div>
+  <div class="surface-section text-700 text-center">
+    <div class="text-900 font-bold text-4xl mb-3">Mural de recados</div>
+  </div>
+
+  <div class="flex flex-wrap gap-3 justify-content-center ">
+    <div *ngFor="let item of recados " class="shadow-4 card">
+      <p-card [header]="item.title" [style]="{ width: '300px' }">
+        <ng-template pTemplate="header">
+          <img alt="Card"
+            style="height: 210px; width: 300px; object-fit: cover; display: block;"
+            [src]="item.imagem" />
+        </ng-template>
+        <p>
+          {{item.resumo}}
+        </p>
+
+          <p class="flex justify-content-end font-italic" >Postado em: {{item.date | date}} </p>
 
 
+        <ng-template pTemplate="footer">
+          <div class="flex gap-3 mt-1">
+            <p-button (onClick)="showDialog(item)" [disabled]="!item.fullText"
+              icon="pi pi-plus" label="Saber mais" class="w-full"
+              styleClass="w-full" />
+          </div>
+        </ng-template>
+      </p-card>
+
+      <!-- Diálogo -->
+      <div class="card flex justify-content-center">
+        <p-dialog
+          header="Header"
+          [(visible)]="visible"
+          [modal]="true"
+          [style]="{ width: '25rem' }">
+          <ng-template pTemplate="header">
+            <div
+              class="inline-flex align-items-center justify-content-center gap-2">
+              <span class="font-bold white-space-nowrap">
+                <img alt="Card"
+                  style="height: 100%; width: 300px; object-fit: cover; display: block;"
+                  [src]="selectedItem?.imagem" />
+              </span>
+            </div>
+          </ng-template>
+          <p
+            class="text-center justify-content-center text-4xl mb-5">{{selectedItem?.title}}</p>
+          <p class> {{selectedItem?.fullText}}</p>
+
+          <ng-template pTemplate="footer">
+            <p-button
+              label="Fechar"
+              severity="danger"
+              (onClick)="visible = false" />
+          </ng-template>
+        </p-dialog>
+      </div>
+    </div>
+
+    <div *ngIf="recados.length > recadosExibidos" class="text-center mt-3">
+      <p-button  label="Ver mais" (click)="showMore()" />
+    </div>
+
+  </div>
+
+  <p-divider></p-divider>
