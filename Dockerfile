@@ -8,9 +8,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Instala as dependências, configurando timeout e retries
-RUN npm config set fetch-timeout 600000 && \
-    npm config set fetch-retries 5 && \
-    npm install
+RUN npm install
 
 # Copia todo o código fonte
 COPY . .
