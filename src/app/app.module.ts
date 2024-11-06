@@ -1,6 +1,7 @@
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms'; // Importação necessária para usar ngModel
 
 import localePT from '@angular/common/locales/pt';
 
@@ -41,10 +42,62 @@ import { AdminProfessoresComponent } from './components/secretaria/admin-profess
 import { MeuHorarioComponent } from './components/estudante/meu-horario/meu-horario.component';
 import { MeuBoletimComponent } from './components/estudante/meu-boletim/meu-boletim.component';
 import { JustificarFaltaComponent } from './components/estudante/justificar-falta/justificar-falta.component';
+import { registerLocaleData } from '@angular/common';
 
 
 import { ButtonModule } from 'primeng/button';
-import { registerLocaleData } from '@angular/common';
+import { CheckboxModule } from 'primeng/checkbox';
+import { InputTextModule } from 'primeng/inputtext';
+import { DividerModule } from 'primeng/divider';
+import { CardModule } from 'primeng/card';
+import { AccordionModule } from 'primeng/accordion';
+import { FieldsetModule } from 'primeng/fieldset';
+import { PanelModule } from 'primeng/panel';
+import { StepperModule } from 'primeng/stepper';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
+import { TabViewModule } from 'primeng/tabview';
+import { AutoCompleteModule } from 'primeng/autocomplete';
+import { CalendarModule } from 'primeng/calendar';
+import { ChipsModule } from 'primeng/chips';
+import { DropdownModule } from 'primeng/dropdown';
+import { FloatLabelModule } from 'primeng/floatlabel';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
+import { InputMaskModule } from 'primeng/inputmask';
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { PasswordModule } from 'primeng/password';
+import { SelectButtonModule } from 'primeng/selectbutton';
+import { ToggleButtonModule } from 'primeng/togglebutton';
+import { PaginatorModule } from 'primeng/paginator';
+import { TableModule } from 'primeng/table';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ToastModule } from 'primeng/toast';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { DialogModule } from 'primeng/dialog';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
+import { SidebarModule } from 'primeng/sidebar';
+import { TooltipModule } from 'primeng/tooltip';
+import { FileUploadModule } from 'primeng/fileupload';
+import { MessagesModule } from 'primeng/messages';
+import { GalleriaModule } from 'primeng/galleria';
+import { ImageModule } from 'primeng/image';
+import { BadgeModule } from 'primeng/badge';
+import { BlockUIModule } from 'primeng/blockui';
+import { ChipModule } from 'primeng/chip';
+import { SkeletonModule } from 'primeng/skeleton';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { TagModule } from 'primeng/tag';
+import { AnimateOnScrollModule } from 'primeng/animateonscroll';
+
+
+
+
+
+
+
 
 
 registerLocaleData(localePT);
@@ -93,7 +146,53 @@ registerLocaleData(localePT);
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    ButtonModule
+    FormsModule,
+    ButtonModule,
+    CheckboxModule,
+    InputTextModule,
+    DividerModule,
+    CardModule,
+    AccordionModule,
+    FieldsetModule,
+    PanelModule,
+    StepperModule,
+    ScrollPanelModule,
+    TabViewModule,
+    AutoCompleteModule,
+    CalendarModule,
+    ChipsModule,
+    DropdownModule,
+    FloatLabelModule,
+    IconFieldModule,
+    InputIconModule,
+    InputMaskModule,
+    InputSwitchModule,
+    InputTextareaModule,
+    InputNumberModule,
+    MultiSelectModule,
+    PasswordModule,
+    SelectButtonModule,
+    ToggleButtonModule,
+    PaginatorModule,
+    TableModule,
+    ConfirmDialogModule,
+    ToastModule,
+    ConfirmPopupModule,
+    DialogModule,
+    DynamicDialogModule,
+    SidebarModule,
+    TooltipModule,
+    FileUploadModule,
+    MessagesModule,
+    GalleriaModule,
+    ImageModule,
+    BadgeModule,
+    BlockUIModule,
+    ChipModule,
+    SkeletonModule,
+    ProgressSpinnerModule,
+    TagModule,
+    AnimateOnScrollModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt-BR' }
