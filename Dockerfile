@@ -4,11 +4,13 @@ FROM node:20-alpine as builder
 # Define o diretório de trabalho
 WORKDIR /app
 
-# Copia os arquivos de configuração do projeto
+# Copia apenas os arquivos de configuração do projeto para aproveitar cache do Docker
 COPY package*.json ./
 
-# Instala as dependências
-RUN npm install
+# Instala as dependências, configurando timeout e retries
+RUN npm config set fetch-timeout 600000 && \
+    npm config set fetch-retries 5 && \
+    npm install
 
 # Copia todo o código fonte
 COPY . .

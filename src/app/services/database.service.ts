@@ -54,10 +54,12 @@ export class DatabaseService {
     return this.http.delete(`${this.apiUrl}/delete-document`, { body: { dbName, collectionName, filter } });
   }
 
+
   // Método para enviar a senha e receber o hash
   cryptoPassword(password: string): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/hash-password`, { password });
   }
+
 
   // Método para verificar a senha durante o login
   verifyPassword(email: string, password: string): Observable<any> {

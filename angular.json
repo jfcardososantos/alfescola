@@ -24,6 +24,14 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "allowedCommonJsDependencies": [
+              "compressorjs",
+              "lodash",
+              "inflight",
+              "rimraf",
+              "glob",
+              "critters"
+           ],
             "outputPath": "dist/alfescola",
             "index": "src/index.html",
             "browser": "src/main.ts",
