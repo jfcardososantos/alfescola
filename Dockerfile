@@ -1,28 +1,29 @@
-# Usar uma imagem base do Node.js
-FROM node:20-alpine AS build
+# Estágio de build
+FROM node:20-alpine as builder
 
-# Definir diretório de trabalho
+# Define o diretório de trabalho
 WORKDIR /app
 
-# Copiar os arquivos do projeto
+# Copia os arquivos de configuração do projeto
 COPY package*.json ./
 
-RUN npm install --legacy-peer-deps --loglevel=error
+# Instala as dependências
+RUN npm install
 
+# Copia todo o código fonte
 COPY . .
 
-# Construa o projeto Angular
-RUN npm run build -- --configuration production
+# Compila o projeto
+RUN npm run build
 
-# Use a imagem oficial do Nginx para servir o aplicativo
+# Estágio de produção
 FROM nginx:alpine
 
-# Copie os arquivos construídos do Angular para o diretório padrão do Nginx
-COPY --from=build /app/dist/alfescola/browser /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/nginx.conf
+# Copia os arquivos compilados do estágio anterior
+COPY --from=builder /app/dist/alfescola /usr/share/nginx/html
 
-# Exponha a porta 80
+# Expõe a porta 80
 EXPOSE 80
 
-# Comando para iniciar o Nginx
+# Inicia o nginx
 CMD ["nginx", "-g", "daemon off;"]
