@@ -1,0 +1,17 @@
+<div class="surface-section text-700 text-center p-7">
+  <div class="text-900 font-bold text-4xl mb-3">Calendário escolar</div>
+</div>
+
+<div class="card flex justify-content-center">
+  <p-calendar
+      class="max-w-full"
+      [(ngModel)]="date"
+      [inline]="true"
+      [showWeek]="false"
+      [numberOfMonths]="2"
+      [responsiveOptions]="responsiveOptions"
+      />
+</div>
+
+<p-divider></p-divider>
+

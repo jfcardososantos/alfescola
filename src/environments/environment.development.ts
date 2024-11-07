@@ -19,7 +19,7 @@ export const galileu = {
   schoolCode: 'eegalileu',
   schoolName: 'Escola Estadual Galileu Galilei',
   frasePrincipal: 'Uma frase que represente a escola',
-  atendimento: ['Ensino Fundamental I', 'Ensnino Fundamental II'],
+  atendimento: ['Ensino Fundamental I', 'Ensino Fundamental II'],
   schoolLogo: '../assets/logos/galileu-logo.png',
   fachada: '../assets/fachadas/fachada.JPG',
 
@@ -74,8 +74,6 @@ switch (window.location.hostname) {
   case 'galileu.com.br':
     environment = galileu;
     break;
-
-
 
   default:
     environment = galileu;

@@ -1,0 +1,69 @@
+<div class="surface-section text-700 text-center p-7">
+  <div class="text-900 font-bold text-4xl mb-3">Álbuns fotográficos</div>
+</div>
+
+<div class="flex flex-wrap gap-3 justify-content-center ">
+  <div *ngFor="let itemObj of albuns" class="shadow-4 card">
+    <p-card [header]="itemObj.title" [style]="{ width: '300px' }">
+      <ng-template pTemplate="header">
+        <img alt="Card"
+          style="height: 210px; width: 300px; object-fit: cover; display: block;"
+          [src]="itemObj.preview" />
+      </ng-template>
+      <p style="min-height: 5em;">
+        {{ itemObj.description.length > 200 ? (itemObj.description | slice:0:200) + '...' : itemObj.description }}
+      </p>
+
+      <p class="flex justify-content-end font-italic">
+        {{itemObj.photos?.length}} fotografias
+      </p>
+
+      <ng-template pTemplate="footer">
+        <div class="flex gap-3 mt-1">
+          <p-button (onClick)="showDialog(itemObj)"
+            icon="pi pi-camera" label="Visualizar fotos" class="w-full"
+            styleClass="w-full" />
+        </div>
+      </ng-template>
+    </p-card>
+
+    <!-- Diálogo -->
+    <div class="card flex justify-content-center">
+      <p-dialog
+        header="Header"
+        [(visible)]="visible"
+        [modal]="true"
+        [style]="{ width: '25rem' }">
+        <ng-template pTemplate="header">
+          <div
+            class="inline-flex align-items-center justify-content-center gap-2">
+            <span class="font-bold white-space-nowrap"> {{selectedItem?.title}}</span>
+          </div>
+        </ng-template>
+
+        <p-galleria
+        [value]="selectedItem?.photos"
+        [showIndicators]="true"
+        [showThumbnails]="false"
+        [responsiveOptions]="responsiveOptions"
+        [containerStyle]="{ 'width': '100%' }">
+        <ng-template pTemplate="item" let-item>
+            <img [src]="item" style="width: 100%; display: block;" />
+        </ng-template>
+    </p-galleria>
+
+        <ng-template pTemplate="footer">
+          <p-button
+            label="Fechar"
+            severity="danger"
+            (onClick)="visible = false" />
+        </ng-template>
+      </p-dialog>
+    </div>
+  </div>
+
+
+</div>
+
+
+<p-divider></p-divider>

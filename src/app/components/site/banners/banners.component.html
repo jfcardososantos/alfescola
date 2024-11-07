@@ -1,0 +1,27 @@
+<div class="surface-card line-height-3 surface-200 p-7">
+
+  <p-galleria
+    [value]="banner"
+    [autoPlay]="true"
+    [circular]="true"
+    [showIndicators]="true"
+    [showThumbnails]="false"
+    [responsiveOptions]="responsiveOptions"
+    [containerStyle]="{ 'width': '100%' }">
+    <ng-template pTemplate="item" let-item>
+      <img [src]="item.itemImageSrc"
+        style="height: 200px; width: 100%; object-fit: cover; display: block;" />
+    </ng-template>
+
+    <!-- <ng-template pTemplate="caption" let-item>
+      <h4 style="margin-bottom: .5rem; color: #ffffff;">
+          {{ item.title }}
+      </h4>
+      <p>{{ item.alt }}</p>
+  </ng-template> -->
+
+  </p-galleria>
+
+</div>
+
+<p-divider></p-divider>

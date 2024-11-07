@@ -92,6 +92,12 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { TagModule } from 'primeng/tag';
 import { AnimateOnScrollModule } from 'primeng/animateonscroll';
 import { LoadingComponent } from './components/tools/loading/loading.component';
+import { HeaderComponent } from './components/site/header/header.component';
+import { BannersComponent } from './components/site/banners/banners.component';
+import { AvisosPublicosComponent } from './components/site/avisos-publicos/avisos-publicos.component';
+import { AlbunsComponent } from './components/site/albuns/albuns.component';
+import { CalendarioComponent } from './components/site/calendario/calendario.component';
+import { ToolbarComponent } from './components/site/toolbar/toolbar.component';
 
 
 
@@ -142,7 +148,13 @@ registerLocaleData(localePT);
     MeuHorarioComponent,
     MeuBoletimComponent,
     JustificarFaltaComponent,
-    LoadingComponent
+    LoadingComponent,
+    HeaderComponent,
+    BannersComponent,
+    AvisosPublicosComponent,
+    AlbunsComponent,
+    CalendarioComponent,
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,
